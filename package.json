@@ -3,7 +3,7 @@
     "displayName": "vscode-cat-ascii-faces",
     "description": "A mostly useless extension to add happy ascii cat faces into your code!",
     "version": "0.0.1",
-    "publisher": "TODO",
+    "publisher": "jessemazzella",
     "engines": {
         "vscode": "^1.28.0"
     },
