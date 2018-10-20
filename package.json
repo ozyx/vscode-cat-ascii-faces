@@ -1,6 +1,6 @@
 {
     "name": "vscode-cat-ascii-faces",
-    "displayName": "vscode-cat-ascii-faces",
+    "displayName": "Ascii Cat Faces for VSCode",
     "description": "A mostly useless extension to add happy ascii cat faces into your code!",
     "version": "0.0.1",
     "publisher": "jessemazzella",
@@ -11,14 +11,19 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:catfaces.insertCatFace",
+        "onCommand:catfaces.insertBigCatFace"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "command": "catfaces.insertCatFace",
+                "title": "Insert Cat Face"
+            },
+            {
+                "command": "catfaces.insertBigCatFace",
+                "title": "Insert Big Cat Face"
             }
         ]
     },
