@@ -3,7 +3,6 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { Cats } from './cats';
-import { ICatFace } from './interfaces/ICatFace';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -54,29 +53,32 @@ export function activate(context: vscode.ExtensionContext) {
      */
     disposable = vscode.commands.registerCommand('catfaces.insertBigCatFace', () => {
         vscode.window.showQuickPick(cats.GetBigCatNames()).then(val => {
-
-            let editor = vscode.window.activeTextEditor;
-
-            if (!editor) {
-                return; // No open text editor
-            }
-
             if (val) {
                 // Get the CatFace object by name from the list
-                let bigCat: ICatFace | undefined = cats.GetBigCatByName(val);
+                cats.GetBigCatByName(val).then(bigCat => {
+                    let editor = vscode.window.activeTextEditor;
 
-                // Get current cursor position
-                const position = editor.selection.active;
+                    if (!editor) {
+                        return; // No open text editor
+                    }
 
-                editor.edit(editBuilder => {
-                    if (bigCat) {
-                        // Iterate through the lines inserting them into the editor,
-                        // followed by a new line.
+                    if (!bigCat) {
+                        throw new Error("Cat name not found");
+                    }
+
+                    // Get current cursor position
+                    const position = editor.selection.active;
+
+                    // Iterate through the lines inserting them into the editor,
+                    // followed by a new line.
+                    editor.edit(editBuilder => {
                         for (let i = 0; i < bigCat.lines.length; i++) {
                             editBuilder.insert(position.translate(i, 0), bigCat.lines[i]);
                             editBuilder.insert(position.translate(i, 0), "\n");
                         }
-                    }
+                    });
+                }).catch(err => {
+                    vscode.window.showErrorMessage(err.toString());
                 });
             }
         });
