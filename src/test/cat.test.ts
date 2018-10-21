@@ -20,7 +20,7 @@ suite("Cat Tests", function () {
     test("GetBigCatByNameTest", function () {
 
         // arrange
-        const cats = new Cats();
+        const cats: Cats = new Cats();
 
         // act
         cats.GetBigCatByName("Spooky").then(cat => {
@@ -33,7 +33,7 @@ suite("Cat Tests", function () {
     test("GetBigCatByNameTest2", function () {
 
         // arrange
-        const cats = new Cats();
+        const cats: Cats = new Cats();
 
         // act
         cats.GetBigCatByName("IAmNotARealCat").then(cat => {
@@ -46,36 +46,36 @@ suite("Cat Tests", function () {
     test("GetAsciiCatListTest", function () {
 
         // arrange
-        const cats = new Cats();
+        const cats: Cats = new Cats();
 
         // act
         const asciiCats: string[] = cats.GetAsciiCatList();
 
         // assert
-        chai.expect(asciiCats).to.be.an("array", "Should return an array").that.is.not.empty("Can't find any ascii cats! Where did your cats go?");
+        chai.expect(asciiCats).to.be.an("array", "Should return an array").with.length.greaterThan(0, "Can't find any ascii cats! Where did your cats go?");
     });
 
     test("GetBigCatListTest", function () {
 
         // arrange
-        const cats = new Cats();
+        const cats: Cats = new Cats();
 
         // act
         const bigCats: ICat[] = cats.GetBigCatFaceList();
 
         // assert
-        chai.expect(bigCats).to.be.an("array", "Should return an array").that.is.not.empty("Can't find any big cats! Where did your big cats go?");
+        chai.expect(bigCats).to.be.an("array", "Should return an array").with.length.greaterThan(0, "Can't find any big cats! Where did your big cats go?");
     });
 
     test("GetAsciiCatListTest", function () {
 
         // arrange
-        const cats = new Cats();
+        const cats: Cats = new Cats();
 
         // act
         const names: string[] = cats.GetBigCatNames();
 
         // assert
-        chai.expect(names).to.be.an("array", "Should return an array").that.is.not.empty("Can't find any big cat names! Where are your big cats' names?");
+        chai.expect(names).to.be.an("array", "Should return an array").with.length.greaterThan(0, "Can't find any big cat names! Where are your big cats' names?");
     });
 });
