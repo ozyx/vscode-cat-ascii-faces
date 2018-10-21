@@ -84,6 +84,23 @@ export function activate(context: vscode.ExtensionContext) {
         });
     });
 
+    disposable = vscode.commands.registerCommand('catfaces.insertCatCommentBlock', () => {
+
+        let editor = vscode.window.activeTextEditor;
+
+        if (!editor) {
+            return; // No open text editor
+        }
+
+        // Get current cursor position
+        const position = editor.selection.active;
+
+        editor.edit(editBuilder => {
+            editBuilder.insert(position, cats.GetCatCommentBlock());
+        });
+
+    });
+
     context.subscriptions.push(disposable);
 }
 

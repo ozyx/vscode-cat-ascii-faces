@@ -12,7 +12,8 @@
     ],
     "activationEvents": [
         "onCommand:catfaces.insertCatFace",
-        "onCommand:catfaces.insertBigCatFace"
+        "onCommand:catfaces.insertBigCatFace",
+        "onCommand:catfaces.insertCatCommentBlock"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -24,6 +25,10 @@
             {
                 "command": "catfaces.insertBigCatFace",
                 "title": "Insert Big Cat Face"
+            },
+            {
+                "command": "catfaces.insertCatCommentBlock",
+                "title": "Insert Cat Comment Block"
             }
         ]
     },
