@@ -68,13 +68,10 @@ export function activate(context: vscode.ExtensionContext) {
                         return; // No open text editor
                     }
 
-                    if (!bigCat) {
-                        throw new Error("Cat name not found");
-                    }
-
                     replaceRangeWithCat(editor, bigCat);
 
-                }).catch(err => {
+                },
+                (err: Error) => {
                     vscode.window.showErrorMessage(err.toString());
                 });
             }
@@ -143,7 +140,6 @@ function getMultiLineRange(editor: vscode.TextEditor, startLine: number, endLine
 
     return Promise.resolve(range);
 }
-
 
 // this method is called when your extension is deactivated
 export function deactivate() {

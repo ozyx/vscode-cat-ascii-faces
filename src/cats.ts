@@ -61,7 +61,7 @@ export class Cats {
         return names;
     }
 
-    public GetBigCatByName(name: string): Promise<ICat | undefined> {
+    public GetBigCatByName(name: string): Promise<ICat> {
 
         for (let bigCat of this.bigCatFaceList) {
             if (name === bigCat.name) {
@@ -70,6 +70,6 @@ export class Cats {
         }
 
         // Not found
-        return Promise.reject(undefined);
+        return Promise.reject(new Error("Could not find cat! Something is very wrong."));
     }
 }
