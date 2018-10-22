@@ -2,8 +2,10 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { Range } from 'vscode';
 import { Cats } from './cats';
 import { ICat } from './interfaces/ICat';
+import { EOL } from 'os';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -54,10 +56,13 @@ export function activate(context: vscode.ExtensionContext) {
      */
     disposable = vscode.commands.registerCommand('catfaces.insertBigCatFace', () => {
         vscode.window.showQuickPick(cats.GetBigCatNames()).then(val => {
+
             if (val) {
+
                 // Get the CatFace object by name from the list
                 cats.GetBigCatByName(val).then(bigCat => {
-                    let editor = vscode.window.activeTextEditor;
+
+                    let editor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
 
                     if (!editor) {
                         return; // No open text editor
@@ -67,17 +72,8 @@ export function activate(context: vscode.ExtensionContext) {
                         throw new Error("Cat name not found");
                     }
 
-                    // Get current cursor position
-                    const position = editor.selection.active;
+                    replaceRangeWithCat(editor, bigCat);
 
-                    // Iterate through the lines inserting them into the editor,
-                    // followed by a new line.
-                    editor.edit(editBuilder => {
-                        for (let i = 0; i < bigCat.lines.length; i++) {
-                            editBuilder.insert(position.translate(i, 0), bigCat.lines[i]);
-                            editBuilder.insert(position.translate(i, 0), "\n");
-                        }
-                    });
                 }).catch(err => {
                     vscode.window.showErrorMessage(err.toString());
                 });
@@ -99,11 +95,55 @@ export function activate(context: vscode.ExtensionContext) {
         editor.edit(editBuilder => {
             editBuilder.insert(position, cats.GetCatCommentBlock());
         });
-
     });
 
     context.subscriptions.push(disposable);
 }
+
+function replaceRangeWithCat(editor: vscode.TextEditor, cat: ICat) {
+
+    let selection: vscode.Selection = editor.selection;
+    let startLine: number = selection.start.line;
+    let endLine: number = selection.end.line;
+
+    getMultiLineRange(editor, startLine, endLine).then(range => {
+        printCat(editor, cat, range);
+    }).catch(err => {
+        vscode.window.showErrorMessage(err.toString());
+    });
+}
+
+function printCat(editor: vscode.TextEditor | undefined, cat: ICat, range: vscode.Range | undefined) {
+    if (editor) {
+        editor.edit(editBuilder => {
+            const asciiCat: string = cat.lines.join(EOL);
+            if (range) {
+                editBuilder.replace(range, asciiCat);
+            } else {
+                throw new Error("Range is invalid. How did this happen?");
+            }
+        });
+    } else {
+        throw new Error("Editor is not present. How did this happen?");
+    }
+}
+
+function getMultiLineRange(editor: vscode.TextEditor, startLine: number, endLine: number): Promise<Range | undefined> {
+
+    let range: Range | undefined = undefined;
+
+    for (var l = startLine; l <= endLine; l++) {
+
+        if (!range) {
+            range = editor.document.lineAt(l).range;
+        } else {
+            range = range.union(editor.document.lineAt(l).range);
+        }
+    }
+
+    return Promise.resolve(range);
+}
+
 
 // this method is called when your extension is deactivated
 export function deactivate() {
