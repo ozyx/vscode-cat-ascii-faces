@@ -4,7 +4,7 @@ export class Cats {
 
     private readonly bigCatFaceList: ICat[];
 
-    private readonly asciiCatList: string[];
+    private readonly asciiCatList: ICat[];
 
     private readonly commentCatList: ICat[];
 
@@ -17,7 +17,7 @@ export class Cats {
     public GetCatCommentBlock(): string {
         const randCat: ICat = this.commentCatList[Math.floor(Math.random() * this.commentCatList.length)];
         const lines: string[] = randCat.lines;
-    
+
         let comment: string[] = ["/**",
             " * ",
             " * "];
@@ -31,8 +31,18 @@ export class Cats {
         return comment.join("\n");
     }
 
-    public GetAsciiCatList(): string[] {
+    public GetAsciiCatList(): ICat[] {
         return this.asciiCatList;
+    }
+
+    public GetAsciiCatNames(): string[] {
+        let cats: string[] = [];
+
+        for (let asciiCat of this.asciiCatList) {
+            cats.push(asciiCat.lines[0]);
+        }
+
+        return cats;
     }
 
     public GetBigCatFaceList(): ICat[] {

@@ -49,7 +49,7 @@ suite("Cat Tests", function () {
         const cats: Cats = new Cats();
 
         // act
-        const asciiCats: string[] = cats.GetAsciiCatList();
+        const asciiCats: ICat[] = cats.GetAsciiCatList();
 
         // assert
         chai.expect(asciiCats).to.be.an("array", "Should return an array").with.length.greaterThan(0, "Can't find any ascii cats! Where did your cats go?");
