@@ -15,12 +15,15 @@ export class Cats {
     }
 
     public GetCatCommentBlock(): string {
+        // Get random cat
         const randCat: ICat = this.commentCatList[Math.floor(Math.random() * this.commentCatList.length)];
         const lines: string[] = randCat.lines;
 
-        let comment: string[] = ["/**",
+        let comment: string[] = [
+            "/**",
             " * ",
-            " * "];
+            " * "
+        ];
 
         for (let line of lines) {
             comment.push(` *   ${line}`);

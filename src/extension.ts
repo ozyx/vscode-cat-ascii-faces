@@ -71,9 +71,9 @@ export function activate(context: vscode.ExtensionContext) {
                     replaceRangeWithCat(editor, bigCat);
 
                 },
-                (err: Error) => {
-                    vscode.window.showErrorMessage(err.toString());
-                });
+                    (err: Error) => {
+                        vscode.window.showErrorMessage(err.toString());
+                    });
             }
         });
     });
@@ -111,18 +111,19 @@ function replaceRangeWithCat(editor: vscode.TextEditor, cat: ICat) {
 }
 
 function printCat(editor: vscode.TextEditor | undefined, cat: ICat, range: vscode.Range | undefined) {
-    if (editor) {
-        editor.edit(editBuilder => {
-            const asciiCat: string = cat.lines.join(EOL);
-            if (range) {
-                editBuilder.replace(range, asciiCat);
-            } else {
-                throw new Error("Range is invalid. How did this happen?");
-            }
-        });
-    } else {
+    if (!editor) {
         throw new Error("Editor is not present. How did this happen?");
     }
+
+    editor.edit(editBuilder => {
+        const asciiCat: string = cat.lines.join(EOL);
+
+        if (!range) {
+            throw new Error("Range is invalid. How did this happen?");
+        }
+
+        editBuilder.replace(range, asciiCat);
+    });
 }
 
 function getMultiLineRange(editor: vscode.TextEditor, startLine: number, endLine: number): Promise<Range | undefined> {
