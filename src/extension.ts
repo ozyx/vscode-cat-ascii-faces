@@ -57,7 +57,9 @@ export function activate(context: vscode.ExtensionContext) {
     disposable = vscode.commands.registerCommand('catfaces.insertBigCatFace', () => {
         vscode.window.showQuickPick(cats.GetBigCatNames()).then(val => {
 
-            if (val) {
+            if (!val) {
+                return;
+            }
 
                 // Get the CatFace object by name from the list
                 cats.GetBigCatByName(val).then(bigCat => {
@@ -74,7 +76,6 @@ export function activate(context: vscode.ExtensionContext) {
                     (err: Error) => {
                         vscode.window.showErrorMessage(err.toString());
                     });
-            }
         });
     });
 
