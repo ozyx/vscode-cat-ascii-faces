@@ -1,9 +1,12 @@
 {
     "name": "vscode-cat-ascii-faces",
-    "displayName": "Ascii Cat Faces for VSCode",
+    "displayName": "Ascii Cats for VSCode",
     "description": "A mostly useless extension to add happy ascii cat faces into your code!",
     "version": "0.0.1",
     "publisher": "jessemazzella",
+    "author": {
+        "name": "Jesse Mazzella"
+    },
     "engines": {
         "vscode": "^1.28.0"
     },
@@ -16,7 +19,15 @@
     ],
     "license": "MIT",
     "markdown": "github",
-    "repository": "https://github.com/ozyx/vscode-cat-ascii-faces",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ozyx/vscode-cat-ascii-faces"
+    },
+    "bugs": {
+        "url": "https://github.com/ozyx/vscode-cat-ascii-faces/issues",
+        "email": "jessemazzella@gmail.com"
+    },
+    "homepage": "https://github.com/ozyx/vscode-cat-ascii-faces/blob/master/README.md",
     "categories": [
         "Other"
     ],
