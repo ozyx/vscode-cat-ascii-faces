@@ -27,6 +27,7 @@
         "url": "https://github.com/ozyx/vscode-cat-ascii-faces/issues",
         "email": "jessemazzella@gmail.com"
     },
+    "icon": "res/icon.png",
     "homepage": "https://github.com/ozyx/vscode-cat-ascii-faces/blob/master/README.md",
     "categories": [
         "Other"

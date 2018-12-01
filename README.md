@@ -21,3 +21,7 @@ A mostly useless extension for VSCode that allows you to insert cats of various 
 ### 0.0.1
 
 WIP
+
+## Credits
+
+Cat icon art by Alina Oleynik from the Noun Project
