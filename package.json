@@ -7,6 +7,16 @@
     "engines": {
         "vscode": "^1.28.0"
     },
+    "keywords": [
+        "cat",
+        "ascii",
+        "cats",
+        "fun",
+        "art"
+    ],
+    "license": "MIT",
+    "markdown": "github",
+    "repository": "https://github.com/ozyx/vscode-cat-ascii-faces",
     "categories": [
         "Other"
     ],
