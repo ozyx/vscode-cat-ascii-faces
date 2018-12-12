@@ -17,6 +17,10 @@
         "fun",
         "art"
     ],
+    "galleryBanner": {
+        "color": "#404040",
+        "theme": "dark"
+    },
     "license": "MIT",
     "markdown": "github",
     "repository": {

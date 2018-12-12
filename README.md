@@ -1,4 +1,7 @@
-# vscode-cat-ascii-faces README
+![vscode-ascii-cat-faces](https://github.com/ozyx/vscode-cat-ascii-faces/blob/master/res/icon_sml.png?raw=true)
+
+# vscode-cat-ascii-faces
+
 
 [![Build Status](https://travis-ci.org/ozyx/vscode-cat-ascii-faces.svg?branch=master)](https://travis-ci.org/ozyx/vscode-cat-ascii-faces)
 
@@ -9,19 +12,24 @@ A mostly useless extension for VSCode that allows you to insert cats of various 
 ### Commands
 
 - `catfaces.insertCatFace`
+  - Inserts a one-line cat face ascii emoji into your document.
+
 - `catfaces.insertBigCatFace`
+  - Inserts a big cat into your document.
+
 - `catfaces.insertCatCommentBlock`
-
-## Requirements
-
-## Known Issues
+  - Generates a C++ comment block with random cat artwork.
 
 ## Release Notes
 
 ### 0.0.1
 
-WIP
+- Hello world, we bring cats!
 
 ## Credits
 
-Cat icon art by Alina Oleynik from the Noun Project
+ Cat icon art by Alina Oleynik from the Noun Project
+
+- Jesse Mazzella
+- Areg Tevanyan
+- Jarrett Chien
