@@ -1,8 +1,7 @@
 # vscode-cat-ascii-faces README
 
-![alt text](https://github.com/ozyx/vscode-cat-ascii-faces/blob/master/res/icon.png?raw=true)
-
 [![Build Status](https://travis-ci.org/ozyx/vscode-cat-ascii-faces.svg?branch=master)](https://travis-ci.org/ozyx/vscode-cat-ascii-faces)
+![alt text](https://github.com/ozyx/vscode-cat-ascii-faces/blob/master/res/icon.png?raw=true)
 ![alt text](https://user-images.githubusercontent.com/32005247/49847435-eb4cf600-fd84-11e8-99cd-4f1260912e86.jpg)
 
 A mostly useless extension for VSCode that allows you to insert cats of various forms into your code! For when you need even more cats in your life.
