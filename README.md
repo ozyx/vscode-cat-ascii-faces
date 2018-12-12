@@ -13,13 +13,13 @@ Open the Command Pallete ⇧-⌘-P (Windows, Linux Ctrl-Shift-P) and enter a cat
 ### Commands
 
 - `catfaces.insertCatFace`
--Insert cat face will provide a list of small cat emojis.
+  - Insert cat face will provide a list of small cat emojis.
 
 - `catfaces.insertBigCatFace`
--Insert Big Cat Face will give you a list of much bigger cats to chose from.
+  - Insert Big Cat Face will give you a list of much bigger cats to chose from.
 
 - `catfaces.insertCatCommentBlock`
--Insert Cat Comment Block will take your highlighted text and insert it into a cat image.
+  - Insert Cat Comment Block will take your highlighted text and insert it into a cat image.
 Currently this is only implemented for C++
 
 ## Requirements
